@@ -208,7 +208,8 @@ impl Rect {
 
     /// Returns true if the given position is inside the `Rect`.
     ///
-    /// The position is considered inside the `Rect` if it is on the `Rect`'s border.
+    /// The position is considered to be inside the `Rect`
+    /// if it is inside or on the border of the `Rect`.
     ///
     /// # Examples
     ///
