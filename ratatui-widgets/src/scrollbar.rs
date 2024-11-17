@@ -130,9 +130,9 @@ pub enum ScrollbarOrientation {
 ///
 /// For example, in the following list, assume there are 4 bullet points:
 ///
-/// - the `content_length` is 4
+/// - the `content_length` is 8
 /// - the `position` is 0
-/// - the `viewport_content_length` is 2
+/// - the `viewport_content_length` is 4
 ///
 /// ```text
 /// ┌───────────────┐
@@ -140,6 +140,19 @@ pub enum ScrollbarOrientation {
 /// │   single item █
 /// │2. this is a   ║
 /// │   second item ║
+/// └───────────────┘
+/// ```
+///
+/// For example, in the following list, assume there are 4 bullet points:
+///
+/// - the `content_length` is 4
+/// - the `position` is 0
+/// - the `viewport_content_length` is 2
+///
+/// ```text
+/// ┌───────────────┐
+/// │1. this is a   █
+/// │2. this is a   ║
 /// └───────────────┘
 /// ```
 ///
@@ -451,7 +464,11 @@ impl ScrollbarState {
         self
     }
 
-    /// Sets the items' size.
+    /// Sets the viewport size.
+    ///
+    /// This needs to be set if the viewport size differs
+    /// from the track lenght.
+    /// This may be the case if begin and end symbols are set.
     ///
     /// This is a fluent setter method which must be chained or used as it consumes self
     #[must_use = "method moves the value of self and returns the modified value"]
